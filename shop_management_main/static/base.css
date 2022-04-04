@@ -1,0 +1,767 @@
+
+
+/* body {
+    background-color: whitesmoke;
+} */
+
+#brand-logo{
+    padding-left: 10;
+}
+
+
+
+.sidenav {
+    background: url(https://www.3ctele.com/wp-content/uploads/2015/12/3c-gradient-background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: opacity(0.9);
+    background-position-x: 20%;
+}
+
+
+#mainHeader {
+    background: #232;
+}
+
+
+.gradientBackground{
+    background: url(https://www.3ctele.com/wp-content/uploads/2015/12/3c-gradient-background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+
+/* products Page styling  */
+
+.productsPage {
+
+    flex-basis: 100%;
+    height: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+
+}
+
+.productsPage .header {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.products {
+
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    border: whitesmoke solid .3px;
+}
+
+
+
+
+
+.products .headingTable {
+
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    background: whitesmoke;
+
+}
+
+.products .product:nth-child(odd) {
+    background: whitesmoke;
+}
+
+.headingTable .title {
+    flex-basis: 60%;
+}
+
+.headingTable .price {
+    flex-basis: 20%;
+}
+
+.headingTable .buy_price {
+    flex-basis: 20%;
+}
+
+.products .product {
+
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+
+}
+.product .title {
+    flex-basis: 60%;
+}
+
+.product .price {
+    flex-basis: 20%;
+}
+
+.product .buy_price {
+    flex-basis: 20%;
+}
+
+
+.addMore {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.addMore button {
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    margin: 5px;
+    color: white;
+    background: #0484b2;
+}
+
+.addMore a {
+    color: white;
+}
+
+/* end products styling */
+
+
+/* add new product styling  */
+
+#newProductForm {
+    flex-basis: 100%;
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top : 0;
+    align-items: center;
+    background: #214654b8;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: 0.7s;
+    transform: translateX(-2000px);
+}
+
+#newProductForm form {
+
+    padding: 20px;
+    background:white;
+    font-size: medium;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 12px;
+
+}
+
+
+#newProductForm label {
+
+    color: black;
+    font-size: medium;
+
+}
+
+#newProductForm button{
+
+    width: 100%;
+    background: #222;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+
+}
+
+#newProductForm #otheropt {
+    padding: 5px;
+}
+
+#closeNewProductForm {
+
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+
+}
+
+#closeButtonWrapper {
+
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 100%;
+    width: 100%;
+    justify-content: flex-end;
+
+}
+
+#newProductForm #closeNewProductForm {
+    background: #222;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    width: 50px;
+
+}
+
+
+/* end add new product styling */
+
+
+/* transactions days styling  */
+
+#transaction_days_page{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.headWrapper{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.headWrapper .heading {
+    font-size: xx-large;
+}
+
+.headWrapper .addNewTransactionButton {
+
+    /* width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    border: none;
+    background: #0c4771; */
+
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    margin: 5px;
+    color: white;
+    background: #0484b2;
+
+}
+
+.headWrapper .addNewTransactionButton a {
+    color: white;
+}
+
+
+.transactions {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    border: whitesmoke solid .3px;
+}
+
+
+
+.transactions .tableHeadings {
+
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    background: whitesmoke;
+
+}
+
+.transactions .transaction:nth-child(odd){
+    background: whitesmoke;
+}
+
+#transaction_days_page .date {
+    flex-basis: 65%;
+}
+
+#transaction_days_page .sales {
+    flex-basis: 15%;
+}
+
+#transaction_days_page .profit {
+    flex-basis: 15%;
+}
+
+#transaction_days_page .link {
+    flex-basis: 5%;
+}
+
+.transactions .transaction {
+
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    /* background: whitesmoke; */
+
+}
+
+
+
+/* end transactions days  styling*/
+
+
+/* transactions page styling  */
+#transactionPage {
+
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+
+}
+
+#transactionPage .header {
+
+    font-size: x-large;
+    padding: 5px;
+    font-weight: 300;
+    font-family: inherit;
+}
+
+#transactionPage .profSales {
+
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    font-size: large;
+    font-weight: 300;
+
+
+}
+
+
+#transactionPage .transactionProductsWrapper {
+
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+#transactionPage .transactionProductsWrapper .transactionProductsHeader {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+
+#transactionPage .transactionProductsWrapper .transactionProductWrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+
+
+#transactionPage .transactionProductsWrapper .transactionProductsHeader .title {
+    font-size: x-large;
+}
+
+
+
+#transactionPage .transactionProductsWrapper .transactionProductsHeader #makeNewTransactionButton {
+
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 20px;
+    background: #09507c;
+    color: white;
+
+}
+
+#transactionPage .transactionProductsWrapper .title {
+    flex-basis: 70%;
+}
+
+#transactionPage .transactionProductsWrapper .price {
+    flex-basis: 15%;
+}
+
+#transactionPage .transactionProductsWrapper .quantity {
+    flex-basis: 15%;
+}
+
+
+#transactionPage .transactionProductsWrapper .transactionProducts {
+
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    border: whitesmoke solid .3px;
+
+}
+
+#transactionPage .transactionProductsWrapper .transactionProducts .transactionProductsTableHeader {
+
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    background: whitesmoke;
+
+}
+
+#transactionPage .transactionProductsWrapper .transactionProducts .transactionProductWrapper:nth-child(odd){
+    background: whitesmoke;
+}
+
+
+/* add new form  */
+
+select {
+    display: block;
+}
+
+
+
+
+
+
+#newTransactionForm {
+    flex-basis: 100%;
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top : 0;
+    align-items: center;
+    background: #214654b8;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: 0.7s;
+    transform: translateX(-2000px);
+}
+
+#newTransactionForm form {
+
+    padding: 20px;
+    background:white;
+    font-size: medium;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 12px;
+
+}
+
+
+#newTransactionForm label {
+
+    color: black;
+    font-size: medium;
+
+}
+
+#newTransactionForm button{
+
+    width: 100%;
+    background: #222;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+
+}
+
+#newTransactionForm #otheropt {
+    padding: 5px;
+}
+
+#closeNewTransactionForm {
+
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+
+}
+
+#closeButtonWrapper {
+
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 100%;
+    width: 100%;
+    justify-content: flex-end;
+
+}
+
+#newTransactionForm #closeNewTransactionForm {
+    background: #222;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    width: 50px;
+
+}
+
+
+/* end transactions page styling */
+
+
+
+/* product summary styling */
+
+#productSummaryPage {
+
+    display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
+    /* padding: 10px; */
+
+}
+
+.pSummaryHeading {
+
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background: url(https://www.3ctele.com/wp-content/uploads/2015/12/3c-gradient-background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    font-weight: bold;
+
+
+}
+
+#productSummaryPage > .graph {
+    padding : 0px 10px;
+}
+
+#openInDesktop {
+    display: none;
+    text-align: center;
+    border-radius: 10px;
+    /* border: #09618e solid 1px; */
+    height: 50vh;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+
+}
+
+
+@media only screen and (max-width: 1000px) {
+    canvas {
+        display: none;
+    }
+    #openInDesktop {
+        display: flex;
+        flex-direction: column;
+    }
+    
+  }
+  
+/* end priduct summary styling */
+
+/* graph styling */
+canvas {
+
+    background: url('https://img.pngio.com/how-to-add-gridlines-to-a-scene-help-center-grid-lines-png-1024_768.png');
+    background-size: cover;
+    background-position-x: 50px;
+    background-repeat: no-repeat;
+    background-position-y: -230px;
+
+    /* background: url('https://cdn.pixabay.com/photo/2016/08/05/09/31/banner-1571861_960_720.jpg'); */
+
+    /* background: url('https://cdn2.vectorstock.com/i/1000x1000/37/76/graph-paper-background-vector-1303776.jpg');
+    /* background-size: auto; */
+    /* background-position-y: -50px;
+    background-position-x: 20px; */ 
+    /* background : url('http://www.pptbackgrounds.org/uploads/light-blue-simple-graph-powerpoint-templates.jpg'); */
+
+}
+
+/* end graph styling */
+
+
+/* index page styling   */
+
+#mainDashboard  {
+
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: whitesmoke;
+
+}
+
+#mainStatistics {
+
+    display: flex;
+    flex-direction: column;
+    /* padding: 10px; */
+    /* border: solid 2px whitesmoke; */
+    background-color: #f9f9f9;
+
+}
+
+#tableHead {
+    font-weight: bold;
+}
+
+#mainStatistics .column:nth-child(odd) {
+    background-color: #029ccb2b;
+}
+
+#mainStatistics .column {
+
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    
+
+}
+
+#mainStatistics .column  .label {
+    flex-basis: 50%;
+}
+
+#mainStatistics .column .inLast30 {
+    flex-basis: 25%;
+}
+
+#mainStatistics .column  .totalValue {
+    flex-basis: 25%;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+  #mainStatistics .column  .label {
+        flex-basis: 20%;
+    }
+
+#mainStatistics .column .inLast30 {
+        flex-basis: 40%;
+    }
+
+#mainStatistics .column  .totalValue {
+        flex-basis: 40%;
+    }
+
+}
+
+/* end index page styling */
+
+
+
+
+/* mobile compatible styles */
+
+@media only screen and (max-width: 600px) {
+
+    #brand-logo{
+        padding: 0;
+    }
+
+    #mainDashboard #mainStatistics {
+    font-size: small;
+    }
+
+    .productsPage header h4 {
+        font-size: x-large;
+    }
+
+    .headingTable .title {
+        flex-basis: 40%;
+    }
+    
+    .headingTable .price {
+        flex-basis: 30%;
+    }
+    
+    .headingTable .buy_price {
+        flex-basis: 30%;
+    }
+
+    .product .title {
+        flex-basis: 40%;
+    }
+    
+    .product .price {
+        flex-basis: 30%;
+    }
+    
+    .product .buy_price {
+        flex-basis: 30%;
+    }
+
+    .productsPage .header h4 {
+        font-size: 1.64rem;
+    }
+
+    .pSummaryHeading  {
+        flex-direction: column;
+    }
+
+    .headWrapper .heading {
+        font-size: 1.64rem;
+    }
+
+    #transaction_days_page .date {
+        flex-basis: 25%;
+    }
+
+    #transactionPage .transactionProductsWrapper .title {
+        flex-basis: 50%;
+    }
+
+    #newProductForm form {
+        width:  90%;
+    }
+
+    #newTransactionForm form {
+        width:  90%;
+    }
+    
+  }
+
+/* end mobile compatible styles */
+
+
+
+/* auth form clean ups  */
+
+#authWrapper .helptext {
+    display: none;
+}
+
+#authWrapper form p {
+    width : 80%;
+}
+
+#authWrapper ul {
+    display: none;
+}
+
+#authWrapper .errorlist {
+    display: flex;
+    width: 300px;
+    text-align: center;
+    color: red;
+    background: #d2b5b5;
+    border-radius: 10px;
+    flex-direction: column;
+}
+/*  end auth form cleanup */

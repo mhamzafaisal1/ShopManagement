@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id='authWrapper'>
+    <form method="post" action="{% url 'users:register' %}">
+      <h5>Create your free account</h5>
+        {% csrf_token %}
+        {{ form.as_p }}
+      
+        <button name="submit">Register</button>
+        <div id='otheropt'>Already have a account?  <a href="{% url 'users:login' %}">Login</a></div>
+        <input type="hidden" name="next" value="{% url 'shop_management_main:index' %}" />
+
+      </form>
+</div>
+
+{% endblock content %}

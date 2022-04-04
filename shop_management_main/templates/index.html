@@ -1,0 +1,316 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+
+
+    .bg-image {
+      /* The image used */
+      background-image: url('https://www.quickanddirtytips.com/sites/default/files/images/5360/line_graph.png');
+    
+      /* Add the blur effect */
+      filter: blur(8px);
+      -webkit-filter: blur(8px);
+    
+      /* Full height */
+      height: 100%;
+    
+      /* Center and scale the image nicely */
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    
+    /* Position text in the middle of the page/image */
+    .bg-text {
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+      color: white;
+      font-weight: bold;
+      border: 3px solid #f1f1f1;
+      position: absolute;
+      top: 80%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      width: 80%;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    
+</style>
+
+<script>
+    let data = []
+
+
+let count = 0;
+
+let obj = []
+
+let wow = 1500;
+
+for (let  i=0; i < 366 ; i++) {
+    let date = new Date('12/12/2018')
+    
+    if (Math.floor(Math.random() * 2) == 0) {
+        // add one ;
+        wow = wow+Math.floor(Math.random() * i)
+        obj.push({
+            date : new Date(date.setDate(date.getDate() + i)),
+            close : wow
+        })
+    } else {
+        wow = wow-Math.floor(Math.random() * i)
+        while (wow < 0) {
+            wow = wow+Math.floor(Math.random() * i)
+        }
+
+        obj.push({
+            date : new Date(date.setDate(date.getDate() + i)),
+            close : wow
+        })
+    }
+}
+
+// let obj = []
+
+
+// for (let i=0; i  <  305 ; i++) {
+//   let date = new Date()
+//   let rand = Math.floor(Math.random() * 750)  + 10000 
+//   obj.push({
+//     date : new Date(date.setDate(date.getDate() + i)),
+//     close : rand
+//   })
+// }
+
+
+
+</script>
+<script>
+let profit_summary = {
+    total : 0,
+    last30  : 0
+}
+let  sales_summary = {
+    total : 0,
+    last30 : 0
+}
+let val_last_30;
+</script>
+
+{% for transaction_day in transaction_days %}
+<script>
+   
+ data.push({
+     date : moment("{{transaction_day}}").format("D-MMM-YY"),
+     close : "{{transaction_day.profit}}",
+    //  revenue : "{{transaction_day.profit}}"
+ })
+ profit_summary.total += parseInt(("{{transaction_day.profit}}"))
+ sales_summary.total += parseInt(("{{transaction_day.sum}}"))
+
+//  checking if the date is in last 30 ; if it is then add its number to the sumary data;
+val_last_30 = moment().subtract(1, 'month');
+if (moment("{{transaction_day}}").isAfter(val_last_30)) {
+    profit_summary.last30 += parseInt(("{{transaction_day.profit}}"))
+    sales_summary.last30 += parseInt(("{{transaction_day.sum}}"))
+}
+
+</script>
+{% endfor %}
+
+
+
+
+
+
+<div id="mainDashboard">
+    <div id="dashboardHeading">
+        <h5>Summary</h5>
+    </div>
+    <div id="mainStatistics">
+        <div id='tableHead'  class="column">
+            <div class="label">Title</div>
+            <div class="inLast30">In last 30 days</div>
+            <div class="totalValue">Total</div>
+        </div>
+        <div class="column">
+            <div class="label">Profit</div>
+            <div id='last30_profit' class="inLast30">Rs 450</div>
+            <div id='total_profit' class="totalValue"></div>
+        </div>
+        <div class="column">
+            <div class="label">Sales</div>
+            <div id='last30_sales' class="inLast30"> Rs 60000</div>
+            <div id='total_sales' class="totalValue">Rs 230000</div>
+        </div>
+    </div>
+    <div class="graph">
+        <h5>Profit Graph</h5>
+        <canvas width="960" height="500"></canvas>
+        <!-- <div id='openInDesktop'>
+            <h6>Screen width is too small to view graphs</h6>
+            <h6>To view graph you need to open this site in a desktop or Laptop</h6>
+        </div> -->
+        <div id='openInDesktop'  class="bg-image"></div>
+        <div id='openInDesktop' class="bg-text">
+            <h6>Screen width is too small to view graphs</h6>
+            <h6>To view graph you need to open this site in a desktop or Laptop</h6>
+        </div>
+    </div>
+</div>
+
+
+<script>
+let total_profit = document.querySelector('#total_profit');
+let last30_profit = document.querySelector('#last30_profit');
+let total_sales = document.querySelector('#total_sales');
+let last30_sales = document.querySelector('#last30_sales');
+total_profit.innerText = `Rs ${profit_summary.total}`
+last30_profit.innerText = `Rs ${profit_summary.last30}`
+total_sales.innerText = `Rs ${sales_summary.total}`
+last30_sales.innerText = `Rs ${sales_summary.last30}`
+
+</script>
+
+
+<meta charset="utf-8">
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script>
+
+
+data = obj.map(dump => {
+    return {
+        date : moment(dump.date).format("D-MMM-YY"),
+        close : dump.close,
+    }
+})
+
+
+
+
+var canvas = document.querySelector("canvas"),
+    context = canvas.getContext("2d");
+
+  
+
+var margin = {top: 20, right: 20, bottom: 30, left: 50},
+    width = canvas.width - margin.left - margin.right,
+    height = canvas.height - margin.top - margin.bottom;
+
+var parseTime = d3.timeParse("%d-%b-%y");
+
+data = data.map(d => {
+    d.date = parseTime(d.date);
+    d.close = +d.close;
+    return d;
+})  
+
+
+
+var x = d3.scaleTime()
+    .range([0, width]);
+
+var y = d3.scaleLinear()
+    .range([height, 0]);
+
+var line = d3.line()
+    .x(function(d) { return x(d.date); })
+    .y(function(d) { return y(d.close); })
+    .curve(d3.curveStep)
+    .context(context);
+
+context.translate(margin.left, margin.top);
+
+let temp = [{
+    close : 0
+} , {
+    close : 10000
+}]
+
+function getMinY() {
+  return data.reduce((min, p) => p.close < min ? p.close : min, data[0].close);
+}
+function getMaxY() {
+  return data.reduce((max, p) => p.close > max ? p.close : max, data[0].close);
+}
+
+
+x.domain(d3.extent(data, function(d) { return d.date; }));
+  y.domain(d3.extent([{close : (getMinY()/2)}, {close : (getMaxY()*1.5)}]  , function(d) { return d.close; }));
+
+  xAxis();
+  yAxis();
+
+  context.beginPath();
+  line(data);
+  context.lineWidth = 1.5;
+  context.strokeStyle = "steelblue";
+  context.stroke();
+
+function xAxis() {
+  var tickCount = 10,
+      tickSize = 6,
+      ticks = x.ticks(tickCount),
+      tickFormat = x.tickFormat();
+
+  context.beginPath();
+  ticks.forEach(function(d) {
+    context.moveTo(x(d), height);
+    context.lineTo(x(d), height + tickSize);
+  });
+  context.strokeStyle = "black";
+  context.stroke();
+
+  context.textAlign = "center";
+  context.textBaseline = "top";
+  ticks.forEach(function(d) {
+    context.fillText(tickFormat(d), x(d), height + tickSize);
+  });
+}
+
+function yAxis() {
+  var tickCount = 10,
+      tickSize = 6,
+      tickPadding = 3,
+      ticks = y.ticks(tickCount),
+      tickFormat = y.tickFormat(tickCount);
+
+  context.beginPath();
+  ticks.forEach(function(d) {
+    context.moveTo(0, y(d));
+    context.lineTo(-6, y(d));
+  });
+  context.strokeStyle = "black";
+  context.stroke();
+
+  context.beginPath();
+  context.moveTo(-tickSize, 0);
+  context.lineTo(0.5, 0);
+  context.lineTo(0.5, height);
+  context.lineTo(-tickSize, height);
+  context.strokeStyle = "black";
+  context.stroke();
+
+  context.textAlign = "right";
+  context.textBaseline = "middle";
+  ticks.forEach(function(d) {
+    context.fillText(tickFormat(d), -tickSize - tickPadding, y(d));
+  });
+
+  context.save();
+  context.rotate(-Math.PI / 2);
+  context.textAlign = "right";
+  context.textBaseline = "top";
+  context.font = "bold 10px sans-serif";
+  context.fillText("Price (PKR)", -10, 10);
+  context.restore();
+}
+
+</script>
+
+{% endblock content %}

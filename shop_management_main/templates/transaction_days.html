@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!-- <p>
+  <a href="{% url 'shop_management_main:new_transaction_day' %}">
+  Add todays transaction.
+  </a>
+</p> -->
+<div id='transaction_days_page'>
+    <div class="headWrapper">
+        <div class="heading">Transactions</div>
+        <div class="addNewTransactionWrapper">
+          <button class="addNewTransactionButton">
+              <a href="{% url 'shop_management_main:new_transaction_day' %}"><i class="material-icons">add</i></a> 
+            </button>
+        </div>
+    </div>
+    <div class="transactions">
+      <div class="tableHeadings">
+        <div class="date">Date</div>
+        <div class="sales">Total Sales</div>
+        <div class="profit">Profit</div>
+        <div class="link">
+            <a href=""></a>
+        </div>
+      </div>
+      {% for transaction_day in transaction_days %}
+     
+      <div class="transaction"  id="{% url 'shop_management_main:transactions' transaction_day.id %}" >
+          <div class="date">
+              <a href="{% url 'shop_management_main:transactions' transaction_day.id %}">{{ transaction_day }}</a>
+          </div>
+          <div class="sales">{{ transaction_day.sum }}</div>
+          <div class="profit">{{ transaction_day.profit }}</div>
+          <div class="link">
+              <a href="{% url 'shop_management_main:transactions' transaction_day.id %}">View</a>
+          </div>
+      </div>
+<!-- 
+      <div class="transaction"  id="{% url 'shop_management_main:transactions' transaction_day.id %}" >
+          <div class="date">{{ transaction_day }}</div>
+          <div class="sales">{{ transaction_day.sum }}</div>
+          <div class="profit">{{ transaction_day.profit }}</div>
+          <div class="link">
+            <a href="{% url 'shop_management_main:transactions' transaction_day.id %}">View</a>
+          </div>
+      </div> -->
+      {% endfor %}
+    </div>
+  </div>
+
+  <script src='{% static 'linkListeners.js' %}' ></script>
+{% endblock content %}
+
+
+

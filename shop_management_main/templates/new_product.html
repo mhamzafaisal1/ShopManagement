@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div id="authWrapper">
+        <form action = "{% url 'shop_management_main:new_product' %}" method = 'post'>
+            <h5>Add a new Product</h5>
+            {% csrf_token %}
+            {{form.as_p}}
+            <button name = "submit">Add Product</button>
+        </form>
+</div>
+
+{% endblock content %}
+
+
+
